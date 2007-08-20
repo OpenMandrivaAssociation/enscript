@@ -16,7 +16,8 @@ Patch2: enscript-1.6.1-CAN-2004-1186.patch
 URL: http://people.ssh.fi/mtr/genscript/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: flex gettext
-Prereq: /sbin/install-info
+Requires(post): info-install
+Requires(preun): info-install
 Obsoletes: nenscript
 Provides: nenscript
 Prefix: %{_prefix}
