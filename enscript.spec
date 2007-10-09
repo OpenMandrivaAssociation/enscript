@@ -4,7 +4,7 @@
 %define release %mkrel 6
 
 Name: %{name}
-Summary: Converts plain ASCII to PostScript.
+Summary: Converts plain ASCII to PostScript
 Release: %{release}
 Version: %{version}
 License: GPL
