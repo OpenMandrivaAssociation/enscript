@@ -14,6 +14,7 @@ Patch0: enscript-1.6.4-CAN-2004-1184.patch
 Patch1: enscript-1.6.1-CAN-2004-1185.patch
 Patch2: enscript-1.6.1-CAN-2004-1186.patch
 URL: http://people.ssh.fi/mtr/genscript/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: flex gettext
 Requires(post): info-install
 Requires(preun): info-install
