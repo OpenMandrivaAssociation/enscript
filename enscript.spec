@@ -9,7 +9,7 @@ Release: %{release}
 Version: %{version}
 License: GPL
 Group: Publishing
-Source0: ftp://ftp.gnu.org/pub/gnu/enscript-%{version}.tar.bz2
+Source0: http://www.iki.fi/mtr/genscript/enscript-%{version}.tar.gz
 Patch0: enscript-1.6.4-CAN-2004-1184.patch
 Patch1: enscript-1.6.1-CAN-2004-1185.patch
 Patch2: enscript-1.6.1-CAN-2004-1186.patch
@@ -30,9 +30,10 @@ extended to handle different output media and includes many options for
 customizing printouts.
 
 %prep
+
 %setup -q
 %patch0 -p1 -b .can-2004-1184
-%patch1 -p1 -b .can-2004-1185
+%patch1 -p0 -b .can-2004-1185
 %patch2 -p1 -b .can-2004-1186
 
 %build
