@@ -1,25 +1,21 @@
-%define version 1.6.4
-%define name enscript
-%define release %mkrel 10
+%define	version	1.6.5.1
+%define name	enscript
+%define release	 %mkrel 1
 
-Name: %{name}
-Summary: Converts plain ASCII to PostScript
-Release: %{release}
-Version: %{version}
-License: GPL
-Group: Publishing
-Source0: http://www.iki.fi/mtr/genscript/enscript-%{version}.tar.gz
-Patch0: enscript-1.6.4-CAN-2004-1184.patch
-Patch1: enscript-1.6.1-CAN-2004-1185.patch
-Patch2: enscript-1.6.1-CAN-2004-1186.patch
-Patch3: enscript-rh-CVE-2008-3863+CVE-2008-4306.patch
-URL: http://people.ssh.fi/mtr/genscript/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: flex gettext
-Requires(post): info-install
-Requires(preun): info-install
-Obsoletes: nenscript
-Provides: nenscript
+Name:		%{name}
+Summary:	Converts plain ASCII to PostScript
+Release:	%{release}
+Version:	%{version}
+License:	GPLv3
+Group:		Publishing
+Source0:	ftp://ftp.gnu.org/gnu/enscript/%{name}-%{version}.tar.gz
+URL:		ftp://ftp.gnu.org/gnu/enscript/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	flex gettext
+Requires(post):	info-install
+Requires(preun):info-install
+Obsoletes:	nenscript
+Provides: 	nenscript
 
 %description
 GNU enscript is a free replacement for Adobe's Enscript program. Enscript
@@ -30,14 +26,10 @@ customizing printouts.
 
 %prep
 %setup -q
-%patch0 -p1 -b .can-2004-1184
-%patch1 -p0 -b .can-2004-1185
-%patch2 -p1 -b .can-2004-1186
-%patch3 -p0 -b .cve-2008-3863_4306
 
 %build
 %configure2_5x --with-media=Letter
-make
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
