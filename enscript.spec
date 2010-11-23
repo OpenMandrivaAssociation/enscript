@@ -1,4 +1,4 @@
-%define	version	1.6.5.1
+%define	version	1.6.5.2
 %define name	enscript
 %define release	 %mkrel 1
 
