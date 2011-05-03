@@ -1,6 +1,6 @@
 %define	version	1.6.5.2
 %define name	enscript
-%define release	 %mkrel 1
+%define release	 %mkrel 2
 
 Name:		%{name}
 Summary:	Converts plain ASCII to PostScript
