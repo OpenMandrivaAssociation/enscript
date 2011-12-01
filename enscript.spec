@@ -32,16 +32,16 @@ customizing printouts.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
 
-mkdir -p $RPM_BUILD_ROOT/etc/%{name}
-cp $RPM_BUILD_ROOT/%{_datadir}/%{name}/afm/font.map $RPM_BUILD_ROOT/etc/%{name}/font.map
-pushd $RPM_BUILD_ROOT/%{_datadir}/%{name}
+mkdir -p %{buildroot}/etc/%{name}
+cp %{buildroot}/%{_datadir}/%{name}/afm/font.map %{buildroot}/etc/%{name}/font.map
+pushd %{buildroot}/%{_datadir}/%{name}
 ln -sf /etc/%{name}/font.map
 popd
 
-rm -f $RPM_BUILD_ROOT/%{_datadir}/%{name}/font.map
+rm -f %{buildroot}/%{_datadir}/%{name}/font.map
 
 %find_lang %name
 
