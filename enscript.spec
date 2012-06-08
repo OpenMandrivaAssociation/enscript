@@ -1,21 +1,13 @@
-%define	version	1.6.5.2
-%define name	enscript
-%define release	 %mkrel 2
-
-Name:		%{name}
+Name:		enscript
+Version:	1.6.5.2
+Release:	3
 Summary:	Converts plain ASCII to PostScript
-Release:	%{release}
-Version:	%{version}
 License:	GPLv3
 Group:		Publishing
 Source0:	ftp://ftp.gnu.org/gnu/enscript/%{name}-%{version}.tar.gz
 URL:		ftp://ftp.gnu.org/gnu/enscript/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	flex gettext
-Requires(post):	info-install
-Requires(preun):info-install
-Obsoletes:	nenscript
-Provides: 	nenscript
+BuildRequires:	flex
+BuildRequires:	gettext
 
 %description
 GNU enscript is a free replacement for Adobe's Enscript program. Enscript
@@ -33,17 +25,17 @@ customizing printouts.
 
 %install
 rm -rf %{buildroot}
-%makeinstall
+%makeinstall_std
 
-mkdir -p %{buildroot}/etc/%{name}
-cp %{buildroot}/%{_datadir}/%{name}/afm/font.map %{buildroot}/etc/%{name}/font.map
-pushd %{buildroot}/%{_datadir}/%{name}
-ln -sf /etc/%{name}/font.map
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+cp %{buildroot}%{_datadir}/%{name}/afm/font.map %{buildroot}/%{_sysconfdir}/%{name}/font.map
+pushd %{buildroot}%{_datadir}/%{name}
+  ln -sf %{_sysconfdir}/%{name}/font.map
 popd
 
-rm -f %{buildroot}/%{_datadir}/%{name}/font.map
+rm -f %{buildroot}%{_datadir}/%{name}/font.map
 
-%find_lang %name
+%find_lang %{name}
 
 # XXX note doubled %% in sed script below.
 (cd %{buildroot};find .%{_datadir}/enscript/* -type f) | \
@@ -55,26 +47,15 @@ rm -f %{buildroot}/%{_datadir}/%{name}/font.map
 
 cat share.list >> %{name}.lang
 
-%post
-%_install_info %{name}.info
-
-%preun
-%_remove_install_info %{name}.info
-
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog NEWS README README.ESCAPES THANKS TODO 
 %config(noreplace) %{_sysconfdir}/enscript.cfg
-%dir %{_sysconfdir}/enscript
-%config(noreplace) %{_sysconfdir}/enscript/font.map
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/font.map
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/hl
 %dir %{_datadir}/%{name}/afm
 %{_bindir}/*
 %{_mandir}/*/*
 %{_infodir}/%{name}*
-
 
