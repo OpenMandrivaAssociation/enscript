@@ -1,6 +1,6 @@
 Name:		enscript
-Version:	1.6.5.2
-Release:	3
+Version:	1.6.6
+Release:	1
 Summary:	Converts plain ASCII to PostScript
 License:	GPLv3
 Group:		Publishing
@@ -24,7 +24,6 @@ customizing printouts.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
@@ -48,7 +47,7 @@ rm -f %{buildroot}%{_datadir}/%{name}/font.map
 cat share.list >> %{name}.lang
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog NEWS README README.ESCAPES THANKS TODO 
+%doc AUTHORS ChangeLog NEWS README README.ESCAPES THANKS TODO
 %config(noreplace) %{_sysconfdir}/enscript.cfg
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/font.map
@@ -58,4 +57,3 @@ cat share.list >> %{name}.lang
 %{_bindir}/*
 %{_mandir}/*/*
 %{_infodir}/%{name}*
-
