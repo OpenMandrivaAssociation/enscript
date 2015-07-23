@@ -18,9 +18,10 @@ customizing printouts.
 
 %prep
 %setup -q
+sed -i -e 's/AM_C_PROTOTYPES/AC_DEFINE([PROTOTYPES], [1], [Compiler is not prehistoric])/g' configure.ac
 
 %build
-%configure2_5x --with-media=Letter
+%configure --with-media=Letter
 %make
 
 %install
