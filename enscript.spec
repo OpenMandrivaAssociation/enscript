@@ -1,7 +1,7 @@
 Summary:	Converts plain ASCII to PostScript
 Name:		enscript
 Version:	1.6.6
-Release:	11
+Release:	12
 License:	GPLv3
 Group:		Publishing
 Url:		ftp://ftp.gnu.org/gnu/enscript/
